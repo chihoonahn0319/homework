@@ -5,6 +5,8 @@ import Main from "./pages/Main";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
 import Layout from "./common/Layout";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -13,11 +15,13 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route
           path="*"
           element={
             <>
-              <div>없는페이지입니다.</div>
+              <div>없는 페이지입니다.</div>
               <Link to="/">홈으로 이동</Link>
             </>
           }

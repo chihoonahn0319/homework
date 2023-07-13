@@ -39,7 +39,8 @@ export default function Products() {
                 backgroundColor: "#068FFF",
               }}
             >
-              상품1
+              멋진 바지
+              <div>20,000</div>
             </div>
           </Link>
           <Link to="/products/2">
@@ -50,7 +51,8 @@ export default function Products() {
                 backgroundColor: "#068FFF",
               }}
             >
-              상품2
+              멋진 셔츠
+              <div>10,000</div>
             </div>
           </Link>
           <Link to="/products/3">
@@ -61,7 +63,8 @@ export default function Products() {
                 backgroundColor: "#068FFF",
               }}
             >
-              상품3
+              멋진 신발
+              <div>30,000</div>
             </div>
           </Link>
         </div>
