@@ -1,8 +1,10 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 export default function Products() {
-  const [SearchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const products = location.state ? location.state.products : [];
 
   return (
     <>
@@ -31,42 +33,24 @@ export default function Products() {
             gap: "24px",
           }}
         >
-          <Link to="/products/1">
-            <div
-              style={{
-                width: "200px",
-                height: "240px",
-                backgroundColor: "#068FFF",
-              }}
-            >
-              멋진 바지
-              <div>20,000</div>
-            </div>
-          </Link>
-          <Link to="/products/2">
-            <div
-              style={{
-                width: "200px",
-                height: "240px",
-                backgroundColor: "#068FFF",
-              }}
-            >
-              멋진 셔츠
-              <div>10,000</div>
-            </div>
-          </Link>
-          <Link to="/products/3">
-            <div
-              style={{
-                width: "200px",
-                height: "240px",
-                backgroundColor: "#068FFF",
-              }}
-            >
-              멋진 신발
-              <div>30,000</div>
-            </div>
-          </Link>
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <Link to={`/products/${index + 1}`} key={index}>
+                <div
+                  style={{
+                    width: "200px",
+                    height: "240px",
+                    backgroundColor: "#068FFF",
+                  }}
+                >
+                  {product.name}
+                  <div>가격: {product.price}</div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div>상품이 없습니다.</div>
+          )}
         </div>
       </div>
     </>
