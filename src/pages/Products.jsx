@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { 리셋하자이, 정렬하자이 } from "..";
 
 export default function Products() {
-  const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const products = location.state ? location.state.products : [];
+  const 상품들 = useSelector((state) => state.상품들);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -19,12 +20,17 @@ export default function Products() {
         <h2>🔥 여름 추천템 🔥</h2>
         <button
           onClick={() => {
-            setSearchParams({
-              sort: "price",
-            });
+            dispatch(정렬하자이());
           }}
         >
           가격순으로 정렬해랏
+        </button>
+        <button
+          onClick={() => {
+            dispatch(리셋하자이());
+          }}
+        >
+          리셋
         </button>
         <div
           style={{
@@ -33,8 +39,8 @@ export default function Products() {
             gap: "24px",
           }}
         >
-          {products.length > 0 ? (
-            products.map((product, index) => (
+          {상품들.length > 0 ? (
+            상품들.map((product, index) => (
               <Link to={`/products/${index + 1}`} key={index}>
                 <div
                   style={{

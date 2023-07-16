@@ -7,35 +7,16 @@ import Products from "./pages/Products";
 import Layout from "./common/Layout";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [products] = useState([
-    {
-      name: "멋진 바지",
-      price: 20000,
-      options: [28, 30, 32],
-      likes: 100,
-    },
-    {
-      name: "멋진 셔츠",
-      price: 10000,
-      options: ["small", "medium", "large"],
-      likes: 200,
-    },
-    {
-      name: "멋진 신발",
-      price: 30000,
-      options: [230, 240, 250, 260, 270],
-      likes: 300,
-    },
-  ]);
-
+  const products = useSelector((state) => state.상품들);
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Main products={products} />} />
-        <Route path="/products" element={<Products products={products} />} />
-        <Route path="/products/:id" element={<Product products={products} />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Product />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route

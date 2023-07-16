@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-export default function Main({ products }) {
+import { useSelector } from "react-redux";
+export default function Main() {
+  const products = useSelector((state) => state.상품들);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -52,9 +53,9 @@ export default function Main({ products }) {
               gap: "24px",
             }}
           >
-            {products.map((product, index) => (
+            {products.map((product) => (
               <div
-                key={index}
+                key={product.id}
                 style={{
                   width: "200px",
                   height: "240px",
